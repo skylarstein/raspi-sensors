@@ -19,7 +19,7 @@ namespace sensor {
 
     void TSL2561_sensor::prepare() {
         writeRegister(TSL2561_CONTROL, 0x03);  // POWER UP
-        writeRegister(TSL2561_TIMING, 0x11);   // High Gain (16x), integration time of 101ms
+        writeRegister(TSL2561_TIMING, 0x02);   // Low Gain (1x), integration time of 402ms
         writeRegister(TSL2561_INTERRUPT, 0x00);
     }
 
@@ -124,7 +124,7 @@ namespace sensor {
         std::list<result> results;
 
         // Read the result from the sensor
-        uint32_t lux = readData(0, 0, 1);
+        uint32_t lux = readData(1, 0, 1);
 
         // Init the data
         resultValue luxValue;
